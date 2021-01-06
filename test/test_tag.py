@@ -2,6 +2,7 @@ import pytest
 import requests
 
 
+# 获取授权token
 def get_token():
     # url:https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=ID&corpsecret=SECRET
     playload = {
@@ -12,6 +13,7 @@ def get_token():
     return r.json()['access_token']
 
 
+# 造测试数据
 def test_data():
     data = [("测试部" + str(x), x) for x in range(6, 16)]
     print(data)
