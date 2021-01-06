@@ -1,6 +1,7 @@
 # 1,1,2,3,5,8,13,21,34,55,89,144,233
 
 
+# 以时间换空间
 class Fibonacci(object):
     def __init__(self, n):
         self.n = n
