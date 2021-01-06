@@ -1,5 +1,5 @@
 # from collections.abc import Iterable
-
+# 迭代器的原理
 
 class TestIterator(object):
     def __init__(self, x):
