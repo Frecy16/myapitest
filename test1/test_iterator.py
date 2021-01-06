@@ -1,5 +1,5 @@
 # from collections.abc import Iterable
-# 迭代器的原理介绍
+# 迭代器的原理介绍，调用__iter__方法后，再调用__next__方法
 
 class TestIterator(object):
     def __init__(self, x):
