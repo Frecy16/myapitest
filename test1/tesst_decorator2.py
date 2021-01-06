@@ -1,3 +1,4 @@
+# 装饰器的高级使用：校验用户权限（读、写、执行、删除）
 user_permission = 11
 
 DELETE_PERMISSION = 8
