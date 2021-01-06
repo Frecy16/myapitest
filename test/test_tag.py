@@ -105,13 +105,10 @@ class Testtag:
             if "invalid tagid" in e.__str__():
                 self.test_delete(tagid)
                 assert "created" == self.test_create(tagname, tagid)["errmsg"]
-        # print(tagname, type(tagname), tagid, type(tagid))
-        # self.test_create(tagname, tagid)
         assert {"tagid":tagid,"tagname":tagname} == self.test_taglist()["taglist"][-1]
         assert "updated" == self.test_update("管理部", tagid)["errmsg"]
         assert "管理部" in self.test_taglist()["taglist"][-1]["tagname"]
         assert "ok"  == self.test_addtagusers(tagid, ["liuxing"])["errmsg"]
         assert "liuxing" == self.test_gettaguser(tagid)["userlist"][0]["userid"]
-        # print(self.test_gettaguser(tagid)["userlist"][-1]["userid"])
         assert "deleted" == self.test_deletetaguser(tagid, ["userlist"])["errmsg"]
         assert "deleted" == self.test_delete(tagid)["errmsg"]
