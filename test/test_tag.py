@@ -90,7 +90,7 @@ class Testtag:
         r = requests.post(f"https://qyapi.weixin.qq.com/cgi-bin/tag/deltagusers?access_token={self.token}", json=body)
         return r.json()
 
-    # pytest解决多线程执行的问题，需安装pytest-xdist插件，再追加参数 -n auto
+    # pytest解决多线程执行的问题，需安装pytest-xdist插件，再追加参数 -n auto 指定CPU的数量，auto为系统自动选择
     @pytest.mark.parametrize("tagname,tagid", test_data())
     def test_integration(self, tagname, tagid):
         try:
