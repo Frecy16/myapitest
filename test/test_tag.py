@@ -21,6 +21,7 @@ def test_data():
 class Testtag:
     token = get_token()
 
+    # 创建标签
     def test_create(self, tagname, tagid):
         """
         url: https://qyapi.weixin.qq.com/cgi-bin/tag/create?access_token=ACCESS_TOKEN
@@ -34,6 +35,7 @@ class Testtag:
         print(r.json())
         return r.json()
 
+    # 获取标签列表
     def test_taglist(self):
         # url=https://qyapi.weixin.qq.com/cgi-bin/tag/list?access_token=ACCESS_TOKEN
         # access_token = get_token()
@@ -41,12 +43,7 @@ class Testtag:
         # print(r.json())
         return r.json()
 
-    def test_get(self, tagid):
-        # url = https://qyapi.weixin.qq.com/cgi-bin/tag/get?access_token=ACCESS_TOKEN&tagid=TAGID
-        # access_token = get_token()
-        r = requests.get(f"https://qyapi.weixin.qq.com/cgi-bin/tag/get?access_token={self.token}&tagid={tagid}")
-        return r.json()
-
+    # 更新标签
     def test_update(self, tagname, tagid):
         # https://qyapi.weixin.qq.com/cgi-bin/tag/update?access_token=ACCESS_TOKEN
         body = {
@@ -56,11 +53,13 @@ class Testtag:
         r = requests.post(f"https://qyapi.weixin.qq.com/cgi-bin/tag/update?access_token={self.token}", json=body)
         return r.json()
 
+    # 删除标签
     def test_delete(self, tagid):
         # url = https://qyapi.weixin.qq.com/cgi-bin/tag/delete?access_token=ACCESS_TOKEN&tagid=TAGID
         r = requests.get(f"https://qyapi.weixin.qq.com/cgi-bin/tag/delete?access_token={self.token}&tagid={tagid}")
         return r.json()
 
+    # 添加标签成员
     def test_addtagusers(self, tagid, userlist, partylist=None):
         # url = https://qyapi.weixin.qq.com/cgi-bin/tag/addtagusers?access_token=ACCESS_TOKEN
         # access_token = get_token()
@@ -74,10 +73,12 @@ class Testtag:
         r = requests.post(f"https://qyapi.weixin.qq.com/cgi-bin/tag/addtagusers?access_token={self.token}", json=body)
         return r.json()
 
+    # 获取标签成员
     def test_gettaguser(self, tagid):
         r = requests.get(f"https://qyapi.weixin.qq.com/cgi-bin/tag/get?access_token={self.token}&tagid={tagid}")
         return r.json()
 
+    # 删除标签成员接口
     def test_deletetaguser(self, tagid, userlist, partylist=None):
         # access_token = get_token()
         if partylist is None:
