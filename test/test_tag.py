@@ -94,7 +94,7 @@ class Testtag:
         return r.json()
 
     # pytest解决多线程执行的问题，需安装pytest-xdist插件，再追加参数 -n auto 指定CPU的数量，auto为系统自动选择
-    # 接口集成测试，测试整体接口的功能是否正常
+    # 接口集成测试，测试整体接口的功能是否正常，根据是否有对应的业务需求决定是否做接口集成测试
     @pytest.mark.parametrize("tagname,tagid", test_data())
     def test_integration(self, tagname, tagid):
         try:
