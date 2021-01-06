@@ -39,19 +39,16 @@ class Testtag:
         # access_token = get_token()
         r = requests.get(f"https://qyapi.weixin.qq.com/cgi-bin/tag/list?access_token={self.token}")
         # print(r.json())
-        # return r.json()["taglist"]
         return r.json()
 
     def test_get(self, tagid):
         # url = https://qyapi.weixin.qq.com/cgi-bin/tag/get?access_token=ACCESS_TOKEN&tagid=TAGID
         # access_token = get_token()
-        # tagid = self.test_taglist()[0]["tagid"]
         r = requests.get(f"https://qyapi.weixin.qq.com/cgi-bin/tag/get?access_token={self.token}&tagid={tagid}")
         return r.json()
 
     def test_update(self, tagname, tagid):
         # https://qyapi.weixin.qq.com/cgi-bin/tag/update?access_token=ACCESS_TOKEN
-        # access_token = get_token()
         body = {
             "tagname": tagname,
             "tagid": tagid
@@ -61,8 +58,6 @@ class Testtag:
 
     def test_delete(self, tagid):
         # url = https://qyapi.weixin.qq.com/cgi-bin/tag/delete?access_token=ACCESS_TOKEN&tagid=TAGID
-        # access_token = get_token()
-        # tagid = 4
         r = requests.get(f"https://qyapi.weixin.qq.com/cgi-bin/tag/delete?access_token={self.token}&tagid={tagid}")
         return r.json()
 
@@ -80,8 +75,6 @@ class Testtag:
         return r.json()
 
     def test_gettaguser(self, tagid):
-        # access_token = get_token()
-        # tagid = 1
         r = requests.get(f"https://qyapi.weixin.qq.com/cgi-bin/tag/get?access_token={self.token}&tagid={tagid}")
         return r.json()
 
