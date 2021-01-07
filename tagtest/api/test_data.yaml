@@ -1,0 +1,45 @@
+create:
+  method: post
+  url: https://qyapi.weixin.qq.com/cgi-bin/tag/create?access_token=${token}
+  json:
+    tagname: ${tagname}
+    tagid: ${tagid}
+
+taglist:
+  method: get
+  url: https://qyapi.weixin.qq.com/cgi-bin/tag/list?access_token=${token}
+
+update:
+  method: post
+  url: https://qyapi.weixin.qq.com/cgi-bin/tag/update?access_token=${token}
+  json:
+    tagname: ${tagname}
+    tagid: ${tagid}
+
+delete:
+  method: get
+  url: https://qyapi.weixin.qq.com/cgi-bin/tag/delete?access_token=${token}&tagid=${tagid}
+
+addtagusers:
+  method: post
+  url: https://qyapi.weixin.qq.com/cgi-bin/tag/addtagusers?access_token=${token}
+  json:
+    tagid: ${tagid}
+    userlist:
+      - ${userlist}
+    partylist:
+      - ${partylist}
+
+gettagusers:
+  method: get
+  url: https://qyapi.weixin.qq.com/cgi-bin/tag/get?access_token=${token}&tagid=${tagid}
+
+deletetagusers:
+  method: post
+  url: https://qyapi.weixin.qq.com/cgi-bin/tag/deltagusers?access_token=${token}
+  json:
+    tagid: ${tagid}
+    userlist:
+      - ${userlist}
+    partylist:
+      - ${partylist}

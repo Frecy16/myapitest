@@ -1,6 +1,7 @@
 import requests
 
 
+# 创建工具类
 class Util:
     def get_token(self):
         # url:https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=ID&corpsecret=SECRET

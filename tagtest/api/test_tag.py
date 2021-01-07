@@ -3,6 +3,7 @@ from tagtest.api.baseapi import BaseApi, openfile
 from tagtest.api.util import Util
 
 
+# 标签类，继承基础接口类，便于调用其方法及参数
 class Testtag(BaseApi):
     def __init__(self):
         self.token = Util().get_token()
