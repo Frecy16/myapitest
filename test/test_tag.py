@@ -1,3 +1,5 @@
+import re
+
 import pytest
 import requests
 
@@ -15,7 +17,7 @@ def get_token():
 
 # 造测试数据
 def test_data():
-    data = [("测试部" + str(x), x) for x in range(6, 16)]
+    data = [("测试部" + str(x), x, "管理部" + str(x)) for x in range(6, 16)]
     print(data)
     return data
 
@@ -95,18 +97,20 @@ class Testtag:
 
     # pytest解决多线程执行的问题，需安装pytest-xdist插件，再追加参数 -n auto 指定CPU的数量，auto为系统自动选择
     # 接口集成测试，测试整体接口的功能是否正常，根据是否有对应的业务需求决定是否做接口集成测试
-    @pytest.mark.parametrize("tagname,tagid", test_data())
-    def test_integration(self, tagname, tagid):
+    @pytest.mark.parametrize("tagname,tagid,udpname", test_data())
+    def test_integration(self, tagname, tagid, udpname):
         try:
             assert "created" == self.test_create(tagname, tagid)["errmsg"]
         except Exception as e:
             if "invalid tagid" in e.__str__():
                 self.test_delete(tagid)
                 assert "created" == self.test_create(tagname, tagid)["errmsg"]
-        assert {"tagid":tagid,"tagname":tagname} == self.test_taglist()["taglist"][-1]
-        assert "updated" == self.test_update("管理部", tagid)["errmsg"]
-        assert "管理部" in self.test_taglist()["taglist"][-1]["tagname"]
-        assert "ok"  == self.test_addtagusers(tagid, ["liuxing"])["errmsg"]
+        assert tagname == re.findall(f"{tagid}, 'tagname': '(.*?)'", str(self.test_taglist()))[0]
+        assert "updated" == self.test_update(udpname, tagid)["errmsg"]
+        assert udpname == re.findall(f"{tagid}, 'tagname': '(.*?)'", str(self.test_taglist()))[0]
+        assert "ok" == self.test_addtagusers(tagid, ["liuxing"])["errmsg"]
         assert "liuxing" == self.test_gettaguser(tagid)["userlist"][0]["userid"]
-        assert "deleted" == self.test_deletetaguser(tagid, ["userlist"])["errmsg"]
+        assert "deleted" == self.test_deletetaguser(tagid, ["liuxing"])["errmsg"]
         assert "deleted" == self.test_delete(tagid)["errmsg"]
+        # self.test_delete(tagid)
+        # print(self.test_taglist())
