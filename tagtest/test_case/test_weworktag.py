@@ -15,10 +15,10 @@ class TestWeworkTag:
         print(Testtag().test_delete(5))
 
     def test_addtagusers(self):
-        print(Testtag().test_addtagusers(5, ["liuxing", "angler1"]))
+        print(Testtag().test_addtagusers(5, "liuxing"))
 
     def test_gettagusers(self):
-        print(Testtag().test_gettaguser(5))
+        print(Testtag().test_gettagusers(5))
 
-    def test_deletetaguser(self):
-        print(Testtag().test_deletetaguser(5, ["liuxing", "angler1"]))
+    def test_deletetagusers(self):
+        print(Testtag().test_deletetagusers(5, "liuxing"))
