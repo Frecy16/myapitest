@@ -3,7 +3,7 @@ import yaml
 import requests
 
 
-def openfile(filepath="../api/test_data.yml"):
+def openfile(filepath="../api/test_data.yaml"):
     with open(filepath, 'r', encoding="utf-8") as f:
         data = yaml.load(f, Loader=yaml.FullLoader)
     return data
