@@ -9,5 +9,5 @@ def test_yaml():
             "test": "127.0.0.1"
         }
     }
-    with open("env.yaml", "w") as f:
+    with open("env.yml", "w") as f:
         yaml.safe_dump(data=env, stream=f)

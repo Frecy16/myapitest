@@ -29,7 +29,7 @@ class TestEnv:
     #         "test": "127.0.0.1"
     #     }
     # }
-    env = yaml.safe_load(open("env.yaml"))
+    env = yaml.safe_load(open("env.yml"))
 
     def send(self, data: dict):
         # 将请求的结构体的url从一个写死的ip地址改为一个（任意的）域名
