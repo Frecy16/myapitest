@@ -1,4 +1,3 @@
-import requests
 from tagtest.api.baseapi import BaseApi, openfile
 from tagtest.api.util import Util
 

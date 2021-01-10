@@ -12,7 +12,7 @@ class TestWeworkTag:
         print(Testtag().test_update("人力资源部", 5))
 
     def test_deletetag(self):
-        print(Testtag().test_delete(5))
+        assert "deleted" == Testtag().test_delete(5)["errmsg"]
 
     def test_addtagusers(self):
         print(Testtag().test_addtagusers(5, "liuxing"))
