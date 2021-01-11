@@ -10,4 +10,5 @@ class Util:
             "corpsecret": "8nQMZi5-VPcw1UjYPcOLQWA0g-VdLHNV5531pbIPrkk"
         }
         r = requests.get("https://qyapi.weixin.qq.com/cgi-bin/gettoken", params=playload)
+        # print(r.json()["access_token"])
         return r.json()['access_token']
