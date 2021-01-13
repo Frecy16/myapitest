@@ -1,5 +1,5 @@
-from tagtest.api.baseapi import BaseApi, openfile
-from tagtest.api.util import Util
+from tagtest import BaseApi, openfile
+from tagtest import Util
 
 
 # 标签类，继承基础接口类，便于调用其方法及参数

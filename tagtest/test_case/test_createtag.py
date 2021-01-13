@@ -1,4 +1,4 @@
-from tagtest.api.test_tag import Testtag
+from tagtest import Testtag
 
 
 class TestCreateTag:
